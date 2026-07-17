@@ -6,9 +6,175 @@ package org.example;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+
 class AppTest {
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+
+    //check tests for average function
+    @Test
+    void averagePositiveNumbers() {
+        int[] arr = {2, 4, 6, 8};
+
+        double result = App.average(arr);
+
+        assertEquals(5.0, result, 0.0001);
+    }
+
+    @Test
+    void averageDecimalResult() {
+        int[] arr = {2, 3};
+
+        double result = App.average(arr);
+
+        assertEquals(2.5, result, 0.0001);
+    }
+
+    @Test
+    void averageSingleElement() {
+        int[] arr = {7};
+
+        double result = App.average(arr);
+
+        assertEquals(7.0, result, 0.0001);
+    }
+
+    @Test
+    void averageNegativeNumbers() {
+        int[] arr = {-2, -4, -6};
+
+        double result = App.average(arr);
+
+        assertEquals(-4.0, result, 0.0001);
+    }
+
+    @Test
+    void averageEmptyArray() {
+        int[] arr = {};
+
+        assertThrows(IllegalArgumentException.class, () -> App.average(arr));
+    }
+
+    //////////////////////////////////////////////////////
+
+    //check tests for filterEvens function
+    @Test
+    void filterOnlyEvenNumbers() {
+        List<Integer> list = Arrays.asList(2, 4, 6, 8);
+
+        List<Integer> result = App.filterEvens(list);
+
+        assertEquals(list, result);
+    }
+
+    @Test
+    void filterOnlyOddNumbers() {
+        List<Integer> list = Arrays.asList(1, 3, 5, 7);
+
+        List<Integer> result = App.filterEvens(list);
+
+        assertTrue(result.isEmpty());
+    }
+
+
+    @Test
+    void filterMixedNumbers() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        List<Integer> expected = Arrays.asList(2, 4, 6);
+
+        List<Integer> result = App.filterEvens(list);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void filterEmptyList() {
+        List<Integer> list = new ArrayList<>();
+
+        List<Integer> result = App.filterEvens(list);
+
+        assertTrue(result.isEmpty());
+    }
+
+    @Test
+    void filterNegativeNumbers() {
+        List<Integer> list = Arrays.asList(-4, -3, -2, -1, 0, 1, 2);
+
+        List<Integer> expected = Arrays.asList(-4, -2, 0, 2);
+
+        List<Integer> result = App.filterEvens(list);
+
+        assertEquals(expected, result);
+    }
+    //////////////////////////////////////////////////////
+    
+    //check tests for mostCommonWord function
+    @Test
+    void singleWord() {
+        String text = "hello";
+
+        String result = App.mostCommonWord(text);
+
+        assertEquals("hello", result);
+    }
+
+    @Test
+    void mostFrequentWord() {
+        String text = "cat dog cat bird cat dog";
+
+        String result = App.mostCommonWord(text);
+
+        assertEquals("cat", result);
+    }
+
+    @Test
+    void caseInsensitive() {
+        String text = "Hello hello HELLO";
+
+        String result = App.mostCommonWord(text);
+
+        assertEquals("hello", result);
+    }
+
+    @Test
+    void punctuationTest() {
+        String text = "apple, banana! apple. orange? apple";
+
+        String result = App.mostCommonWord(text);
+
+        assertEquals("apple", result);
+    }
+
+    @Test
+    void uniqueWords() {
+        String text = "one two three four";
+
+        String result = App.mostCommonWord(text);
+
+        assertTrue(Arrays.asList("one", "two", "three", "four").contains(result));
+    }
+
+    @Test
+    void multipleSpaces() {
+        String text = "cat   cat\n\ndog";
+
+        String result = App.mostCommonWord(text);
+
+        assertEquals("cat", result);
+    }
+
+    @Test
+    void emptyString() {
+        String text = "";
+
+        assertThrows(NoSuchElementException.class,
+                () -> App.mostCommonWord(text));
     }
 }
