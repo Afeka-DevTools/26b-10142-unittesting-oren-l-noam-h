@@ -3,3 +3,9 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore IntelliJ IDEA project files
+.idea
+
+# Ignore Visual Studio Code project files
+.vscode

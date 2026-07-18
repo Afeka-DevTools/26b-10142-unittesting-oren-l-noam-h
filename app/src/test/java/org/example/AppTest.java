@@ -4,11 +4,77 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
+    /*
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    }
+    */
+
+    @Test
+    void add_WhenGivenTwoNumbers_ReturnsTheirSum() {
+        assertEquals(7, App.add(3, 4));
+        assertEquals(0, App.add(2, -2));
+    }
+
+    @Test
+    void isPrime_WhenGivenPrimeNumber_ReturnsTrue() {
+        assertTrue(App.isPrime(7));
+    }
+
+    @Test
+    void isPrime_WhenGivenNonPrimeNumber_ReturnsFalse() {
+        assertFalse(App.isPrime(10));
+    }
+
+    @Test
+    void isPrime_WhenGivenNumberOutOfRange_ReturnsFalse() {
+        assertFalse(App.isPrime(-1));
+    }
+
+    @Test
+    void reverse_WhenGivenText_ReturnsReversedText() {
+        assertEquals("cba", App.reverse("abc"));
+        assertNotEquals("abc", App.reverse("abc"));
+        assertEquals("", App.reverse(""));
+    }
+
+    @Test
+    void factorial_WhenGivenPositiveNumber_ReturnsFactorial() {
+        assertEquals(120, App.factorial(5));
+    }
+
+    @Test
+    void factorial_WhenGivenZero_ReturnsFactorial() {
+        assertEquals(1, App.factorial(0));
+    }
+
+    @Test
+    void factorial_WhenGivenNegativeNumber_ThrowsIllegalArgumentException() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> App.factorial(-1)
+        );
+
+        assertEquals("Negative number", exception.getMessage());
+    }
+
+    @Test
+    void isPalindrome_WhenGivenPalindromeText_ReturnsTrue() {
+        assertTrue(App.isPalindrome("racecar"));
+    }
+
+    @Test
+    void isPalindrome_WhenGivenNonPalindromeText_ReturnsFalse() {
+        assertFalse(App.isPalindrome("hello"));
+    }
+
+    @Test
+    void isPalindrome_WhenGivenMixedCaseAndPunctuation_IgnoresThem() {
+        assertTrue(App.isPalindrome("A man, a plan, a canal: Panama"));
     }
 }
