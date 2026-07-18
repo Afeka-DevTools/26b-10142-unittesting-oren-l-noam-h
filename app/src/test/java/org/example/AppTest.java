@@ -95,6 +95,211 @@ class AppTest {
 
     //////////////////////////////////////////////////////
 
+    /// App.fibonacciUpTo() ///
+
+        @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForZero() {
+        List<Integer> expected = Collections.singletonList(0);
+        assertEquals(expected, App.fibonacciUpTo(0), "fibonacciUpTo(0) should return [0]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForOne() {
+        List<Integer> expected = Arrays.asList(0, 1, 1);
+        assertEquals(expected, App.fibonacciUpTo(1), "fibonacciUpTo(1) should return [0, 1, 1]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForTwo() {
+        List<Integer> expected = Arrays.asList(0, 1, 1, 2);
+        assertEquals(expected, App.fibonacciUpTo(2), "fibonacciUpTo(2) should return [0, 1, 1, 2]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForThree() {
+        List<Integer> expected = Arrays.asList(0, 1, 1, 2, 3);
+        assertEquals(expected, App.fibonacciUpTo(3), "fibonacciUpTo(3) should return [0, 1, 1, 2, 3]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForFour() {
+        List<Integer> expected = Arrays.asList(0, 1, 1, 2, 3);
+        assertEquals(expected, App.fibonacciUpTo(4), "fibonacciUpTo(4) should return [0, 1, 1, 2, 3]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForTen() {
+        List<Integer> expected = Arrays.asList(0, 1, 1, 2, 3, 5, 8);
+        assertEquals(expected, App.fibonacciUpTo(10), "fibonacciUpTo(10) should return [0, 1, 1, 2, 3, 5, 8]");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldReturnCorrectSequenceForOneHundred() {
+        List<Integer> expected = Arrays.asList(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89);
+        assertEquals(expected, App.fibonacciUpTo(100), "fibonacciUpTo(100) should return correct sequence up to 89");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldThrowExceptionForNegativeOne() {
+        assertThrows(IllegalArgumentException.class, () -> App.fibonacciUpTo(-1), "fibonacciUpTo(-1) should throw IllegalArgumentException");
+    }
+
+    @Test
+    void fibonacciUpTo_shouldThrowExceptionForNegativeTen() {
+        assertThrows(IllegalArgumentException.class, () -> App.fibonacciUpTo(-10), "fibonacciUpTo(-10) should throw IllegalArgumentException");
+    }
+
+    /// App.charFrequency() ///
+
+    @Test
+    void charFrequency_shouldReturnEmptyMapForEmptyString() {
+        String input = "";
+        assertTrue(App.charFrequency(input).isEmpty(), "charFrequency('') should return an empty map");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForSingleCharacterString() {
+        String input = "a";
+        Map<Character, Integer> expected = Collections.singletonMap('a', 1);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('a') should return {'a': 1}");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForAllIdenticalCharacters() {
+        String input = "aaaaa";
+        Map<Character, Integer> expected = Collections.singletonMap('a', 5);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('aaaaa') should return {'a': 5}");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForRegularString() {
+        String input = "hello";
+        Map<Character, Integer> expected = new HashMap<>();
+        expected.put('h', 1);
+        expected.put('e', 1);
+        expected.put('l', 2);
+        expected.put('o', 1);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('hello') should return correct map");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForMixedCaseAndSpaces() {
+        String input = "Hello World";
+        Map<Character, Integer> expected = new HashMap<>();
+        expected.put('H', 1);
+        expected.put('e', 1);
+        expected.put('l', 3);
+        expected.put('o', 2);
+        expected.put(' ', 1);
+        expected.put('W', 1);
+        expected.put('r', 1);
+        expected.put('d', 1);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('Hello World') should return correct map");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForNumbersAndSpecialCharacters() {
+        String input = "123!@#abc";
+        Map<Character, Integer> expected = new HashMap<>();
+        expected.put('1', 1); expected.put('2', 1); expected.put('3', 1);
+        expected.put('!', 1); expected.put('@', 1); expected.put('#', 1);
+        expected.put('a', 1); expected.put('b', 1); expected.put('c', 1);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('123!@#abc') should return correct map");
+    }
+
+    @Test
+    void charFrequency_shouldReturnCorrectMapForOnlySpaces() {
+        String input = "   ";
+        Map<Character, Integer> expected = Collections.singletonMap(' ', 3);
+        assertEquals(expected, App.charFrequency(input), "charFrequency('   ') should return {' ': 3}");
+    }
+
+    @Test
+    void charFrequency_shouldThrowNullPointerExceptionForNullInput() {
+        assertThrows(NullPointerException.class, () -> App.charFrequency(null), "charFrequency(null) should throw NullPointerException");
+    }
+
+    /// App.isAnagram ///
+
+    @Test
+    void isAnagram_shouldReturnTrueForEmptyStrings() {
+        assertTrue(App.isAnagram("", ""), "Empty strings should be considered anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForIdenticalStrings() {
+        assertTrue(App.isAnagram("test", "test"), "Identical strings should be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForSingleIdenticalCharacters() {
+        assertTrue(App.isAnagram("a", "a"), "Single identical characters should be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForBasicAnagrams() {
+        assertTrue(App.isAnagram("listen", "silent"), "listen and silent should be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForCaseInsensitiveAnagrams() {
+        assertTrue(App.isAnagram("Debit Card", "Bad Credit"), "Debit Card and Bad Credit should be anagrams (case-insensitive)");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForSpaceInsensitiveAnagrams() {
+        assertTrue(App.isAnagram("Clint Eastwood", "Old West Action"), "Clint Eastwood and Old West Action should be anagrams (ignoring spaces)");
+        assertTrue(App.isAnagram("  a b ", "b a  "), "Anagrams with only spaces and chars should be true");
+    }
+
+    @Test
+    void isAnagram_shouldReturnTrueForAnagramsWithNumbersAndSpecialCharacters() {
+        assertTrue(App.isAnagram("a1b!", "b!1a"), "a1b! and b!1a should be anagrams");
+        assertTrue(App.isAnagram("123", "321"), "123 and 321 should be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnFalseForDifferentLengths() {
+        assertFalse(App.isAnagram("hello", "world"), "hello and world should not be anagrams (different lengths)");
+    }
+
+    @Test
+    void isAnagram_shouldReturnFalseForOneStringEmptyAndOtherNotEmpty() {
+        assertFalse(App.isAnagram("a", ""), "a and empty string should not be anagrams");
+        assertFalse(App.isAnagram("", "b"), "empty string and b should not be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnFalseForSameLengthDifferentCharacterCounts() {
+        assertFalse(App.isAnagram("apple", "apply"), "apple and apply should not be anagrams (different character counts)");
+        assertFalse(App.isAnagram("aabbc", "abcde"), "aabbc and abcde should not be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnFalseForOnlySpacesDifferentCounts() {
+        assertFalse(App.isAnagram(" ", "  "), "Single space and double space should not be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldReturnFalseForNonAnagramsWithNumbersAndSpecialCharacters() {
+        assertFalse(App.isAnagram("a1b", "a2b"), "a1b and a2b should not be anagrams");
+        assertFalse(App.isAnagram("a!b", "a@b"), "a!b and a@b should not be anagrams");
+    }
+
+    @Test
+    void isAnagram_shouldThrowNullPointerExceptionForFirstNullInput() {
+        assertThrows(NullPointerException.class, () -> App.isAnagram(null, "abc"), "isAnagram(null, 'abc') should throw NullPointerException");
+    }
+
+    @Test
+    void isAnagram_shouldThrowNullPointerExceptionForSecondNullInput() {
+        assertThrows(NullPointerException.class, () -> App.isAnagram("abc", null), "isAnagram('abc', null) should throw NullPointerException");
+    }
+
+    @Test
+    void isAnagram_shouldThrowNullPointerExceptionForBothNullInputs() {
+        assertThrows(NullPointerException.class, () -> App.isAnagram(null, null), "isAnagram(null, null) should throw NullPointerException");
+    }
 
     //////////////////////////////////////////////////////
 
