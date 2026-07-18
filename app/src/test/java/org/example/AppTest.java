@@ -4,6 +4,7 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -12,12 +13,93 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 class AppTest {
+    /*
     @Test void appHasAGreeting() {
         App classUnderTest = new App();
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
+    */
 
-    //check tests for average function
+    /// App.add() ///
+
+    @Test
+    void add_WhenGivenTwoNumbers_ReturnsTheirSum() {
+        assertEquals(7, App.add(3, 4));
+        assertEquals(0, App.add(2, -2));
+    }
+
+    /// App.isPrime ///
+
+    @Test
+    void isPrime_WhenGivenPrimeNumber_ReturnsTrue() {
+        assertTrue(App.isPrime(7));
+    }
+
+    @Test
+    void isPrime_WhenGivenNonPrimeNumber_ReturnsFalse() {
+        assertFalse(App.isPrime(10));
+    }
+
+    @Test
+    void isPrime_WhenGivenNumberOutOfRange_ReturnsFalse() {
+        assertFalse(App.isPrime(-1));
+    }
+
+    /// App.reverse() ///
+
+    @Test
+    void reverse_WhenGivenText_ReturnsReversedText() {
+        assertEquals("cba", App.reverse("abc"));
+        assertNotEquals("abc", App.reverse("abc"));
+        assertEquals("", App.reverse(""));
+    }
+
+    /// App.factorial() ///
+
+    @Test
+    void factorial_WhenGivenPositiveNumber_ReturnsFactorial() {
+        assertEquals(120, App.factorial(5));
+    }
+
+    @Test
+    void factorial_WhenGivenZero_ReturnsFactorial() {
+        assertEquals(1, App.factorial(0));
+    }
+
+    @Test
+    void factorial_WhenGivenNegativeNumber_ThrowsIllegalArgumentException() {
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> App.factorial(-1)
+        );
+
+        assertEquals("Negative number", exception.getMessage());
+    }
+
+    /// App.isPalindrome ///
+
+    @Test
+    void isPalindrome_WhenGivenPalindromeText_ReturnsTrue() {
+        assertTrue(App.isPalindrome("racecar"));
+    }
+
+    @Test
+    void isPalindrome_WhenGivenNonPalindromeText_ReturnsFalse() {
+        assertFalse(App.isPalindrome("hello"));
+    }
+
+    @Test
+    void isPalindrome_WhenGivenMixedCaseAndPunctuation_IgnoresThem() {
+        assertTrue(App.isPalindrome("A man, a plan, a canal: Panama"));
+    }
+
+    //////////////////////////////////////////////////////
+
+
+    //////////////////////////////////////////////////////
+
+    /// App.avarage() ///
+
     @Test
     void averagePositiveNumbers() {
         int[] arr = {2, 4, 6, 8};
@@ -61,9 +143,8 @@ class AppTest {
         assertThrows(IllegalArgumentException.class, () -> App.average(arr));
     }
 
-    //////////////////////////////////////////////////////
+    /// App.filterEvens() ///
 
-    //check tests for filterEvens function
     @Test
     void filterOnlyEvenNumbers() {
         List<Integer> list = Arrays.asList(2, 4, 6, 8);
@@ -113,9 +194,9 @@ class AppTest {
 
         assertEquals(expected, result);
     }
-    //////////////////////////////////////////////////////
-    
-    //check tests for mostCommonWord function
+
+    /* App.mostCommonWord() */
+
     @Test
     void singleWord() {
         String text = "hello";
@@ -177,4 +258,5 @@ class AppTest {
         assertThrows(NoSuchElementException.class,
                 () -> App.mostCommonWord(text));
     }
+
 }
