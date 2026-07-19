@@ -20,6 +20,8 @@ class AppTest {
     }
     */
 
+    /* Oren Levi */
+
     /// App.add() ///
 
     @Test
@@ -94,6 +96,8 @@ class AppTest {
     }
 
     //////////////////////////////////////////////////////
+
+    /* Nikita Koyfman */
 
     /// App.fibonacciUpTo() ///
 
@@ -303,6 +307,8 @@ class AppTest {
 
     //////////////////////////////////////////////////////
 
+    /* Noam Harambam */
+    
     /// App.avarage() ///
 
     @Test

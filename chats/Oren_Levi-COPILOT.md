@@ -1,19 +1,20 @@
 USER PROMPT:
-Hi, I need to write test cases in AppTest.java for the following methods - \
--  `App.add()` \
--  `App.isPrime()` \
--  `App.reverse()` \
--  `App.factrorial()` \
+Hi, I need to write test cases in AppTest.java for the following methods -
+-  `App.add()`
+-  `App.isPrime()`
+-  `App.reverse()`
+-  `App.factrorial()`
 -  `App.isPalindrome()`
 
 Can you first tell me what is the proper converntion for using JUnit, and the wrtie some tests and elaborate on them?
-(Please ignore the first method in AppTest.java, it's there for demonstration only) \
+(Please ignore the first method in AppTest.java, it's there for demonstration only)
+
 `AppTest.java`, `App.java`
 
-RESPONSE: \
-* I’m inspecting the Java app and existing test setup first so I can add idiomatic JUnit tests without breaking anything. \
-* I’ve got the test cases mapped to the real methods; I’m replacing the placeholder test with descriptive JUnit 5 tests now. \
-* The tests are in place; I’m doing one more scan for a local JDK so I can try to run them, but if none exists I’ll report that limitation explicitly. \
+RESPONSE:
+* I’m inspecting the Java app and existing test setup first so I can add idiomatic JUnit tests without breaking anything.
+* I’ve got the test cases mapped to the real methods; I’m replacing the placeholder test with descriptive JUnit 5 tests now.
+* The tests are in place; I’m doing one more scan for a local JDK so I can try to run them, but if none exists I’ll report that limitation explicitly.
 * Done — I replaced the placeholder test in `app/src/test/java/org/example/AppTest.java` with proper JUnit 5 tests for the methods you listed.
 
 JUnit conventions I used:
@@ -104,7 +105,7 @@ Here are the main ways to judge that:
   * Don’t test how the method works internally.
   * Test what result or exception it produces.
 * Include negative tests: \
-Example: factorial(-1) should throw an exception. \
+Example: `factorial(-1)` should throw an exception. \
 This is important because many bugs appear in error handling.
 * Make sure each important path is exercised:
   * if branches 
