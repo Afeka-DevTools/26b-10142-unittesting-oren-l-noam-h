@@ -37,32 +37,53 @@
 
 <div dir="rtl">
 
+## הכנת הפרויקט והרצת הבדיקות
+
 ### 1. שכפול הפרויקט למחשב מקומי
+
+  <div dir="rtl">
+
 יש להריץ את הפקודה הבאה בטרמינל -
 ```bash
 git clone https://github.com/Afeka-DevTools/26b-10142-unittesting-oren-l-noam-h.git
 ```
+  
+  </div>
 
-</div>
+  <br />
 
-<div dir="rtl">
 
-### 2. התקנת Java 
+### 2. התקנת Java
+
+  <div dir="rtl">
+
 יש לעקוב אחר [**המדריך להתקנת JAVA**](/utils/INSTALL_JAVA.md)
 
-</div>
+  </div>
 
-<div dir="rtl">
+  <br />
 
 ### 3. בניית הפרויקט והרצת הבדיקות
 
-**עבור `Windows`** -
-* יש לפתוח טרמינל של Command Prompt (`cmd`)
+  <div dir="rtl">
+חשוב -
+יש לפתוח טרמינל מראש בהתאם למערכת ההפעלה -
+
+  <br /> <br />
+  
+| מערכת הפעלה | טרמינל |
+|---|---|
+| Windows | Command Prompt - `cmd` |
+| Linux / macOS | `git bash` |
+
+<br />
 
 * בטרמינל, יש להיכנס לתיקיית הפרויקט באמצעות הפקודה הבאה -
 ```bash
 cd <project_dir>
 ```
+
+  <br />
 
 * בניית הפרויקט: יש להריץ את הפקודה הבאה בטרמינל -
 
@@ -76,13 +97,17 @@ cd <project_dir>
 BUILD SUCCESSFUL in Xs
 ```
 
+  <br />
+
 * הרצת הבדיקות: יש להריץ את הפקודה הבאה בטרמינל -
 
 ```bat
 .\gradlew.bat test
 ```
 
-**עבור `Linux / macOS`** -
+  <br />
+
+
 
 * בניית הפרויקט: יש להריץ את הפקודה הבאה בטרמינל -
 
@@ -95,22 +120,24 @@ BUILD SUCCESSFUL in Xs
 BUILD SUCCESSFUL in Xs
 ```
 
+  <br />
+
 * הרצת הבדיקות: יש להריץ את הפקודה הבאה בטרמינל -
 
 ```bash
 ./gradlew test
 ```
 
-</div>
+  </div>
 
-<div dir="rtl">
+  <br />
 
 ### 4. דו"ח הבדיקות
 
+  <div dir="rtl">
+
 * יש לפתוח את [דו"ח הבדיקות](/app/build/reports/tests/test/index.html) בדפדפן על מנת לראות את תוצאות הבדיקות
 
-```
-app/build/reports/tests/test/index.html
-```
+  </div>
 
 </div>
